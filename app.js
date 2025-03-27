@@ -1,14 +1,20 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate");
-const wrapeAsync = require("./utils/wrapAsync.js")
-const ExpressError = require("./utils/ExpressError.js")
-const {listingSchema} = require("./schema.js");
+const ExpressError = require("./utils/ExpressError.js");
+const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
 
+
+const listingsRouter = require("./routes/listing.js");
+const reviewsRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 
 //database connectivity
 main()
@@ -20,7 +26,7 @@ main()
 });
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/wonderlust');
+  await mongoose.connect('mongodb://127.0.0.1:27017/newabc');
 }
 
 app.set("view engine", "ejs");
@@ -31,80 +37,46 @@ app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")))
 
-//middleware for validating listing
-const validateListing = (req, res, next, err) => {
-    let {error} = listingSchema.validate(req.body);
-    if(error) {
-        let errMas = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errMsg);
-    } else {
-        next();
-    }
+
+//session
+const sessionOptions = {
+    secret : "mysupersecretcode",
+    resave : false,
+    saveUninitialized : true,
 };
 
+// app.get("/", (req, res) => {
+//     res.redirect('/listings');
+// });  
 
-//index route
-app.get("/listings", wrapeAsync(async (req, res) => {
-    let allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings});
-}));
+app.use(session(sessionOptions));
+app.use(flash());
 
-//New route
-app.get("/listings/new", (req, res) => {
-    res.render("listings/new.ejs");
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+app.use((req, res, next) => {
+    console.log("Current User:", req.user);
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
 });
 
-//show route
-app.get("/listings/:id", wrapeAsync(async (req, res) => {
-    let {id} = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/show.ejs", {listing});
-}));
 
-//create route
-app.post("/listings",validateListing ,wrapeAsync(async (req, res, next) => {
-    let result = listingSchema.validate(req.body);
-    console.log(result);
-    if(result.error) {
-        throw new ExpressError(400, result.error);
-    }
-        const listing = new Listing(req.body.listing);
-        await listing.save();
-        res.redirect("/listings");
-    })
-);
+app.use("/listings", listingsRouter);  
+app.use("/listings/:id/reviews", reviewsRouter);
+app.use("/", userRouter);
 
+//cart route
+const cartRouter = require("./routes/cart");
+app.use("/cart", cartRouter);
 
-//edit route
-app.get("/listing/:id/edit", wrapeAsync(async(req, res) => {
-    console.log(req.params);
-    let {id} = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/edit.ejs", {listing});
-}));
-
-//update route
-app.put("/listings/:id",validateListing, wrapeAsync(async (req, res) => {
-    // if(!req.body.listing) {
-    //     throw new ExpressError(400, "Send Valid Data for listing");
-    // }
-    let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing })
-    res.redirect(`/listings/${id}`);
-}));
-
-//delete route
-app.delete('/listings/:id', wrapeAsync(async (req, res) => {
-    let {id} = req.params;
-    const deleteListing = await Listing.findByIdAndDelete(id);
-    console.log(deleteListing);
-    res.redirect("/listings"); 
-}));
-
-
-app.get("/", (req, res) => {
-    res.send('working');
-});
 
 // if request matching above routes it will executed but if not find route then it will prints "Page Not Found"
 app.all("*", (req, res, next) => {
@@ -118,6 +90,6 @@ app.use((err, req, res, next) => {
     // res.status(statusCode).send(message);
 });
 
-app.listen(8080, () => {
-    console.log("Server is running at port 8080");
+app.listen(1080, () => {
+    console.log("Server is running at port 1080");
 });
