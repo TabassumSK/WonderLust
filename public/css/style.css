@@ -57,7 +57,12 @@ body {
 }
 
 /* Cards */
-.card {
+/* .card {
+    border: none !important;
+    margin-bottom: 2rem;
+} */
+
+.listing-card {
     border: none !important;
     margin-bottom: 2rem;
 }
@@ -66,6 +71,7 @@ body {
     border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;
+    /* height: 25rem !important; */
 }
 
 .card-body {
