@@ -28,10 +28,13 @@ const listingSchema = new Schema({
     price: Number,
     location: String,
     country: String,
+<<<<<<< HEAD
     booked: { 
       type: Boolean, 
       default: false // Default is false (not booked)
   },
+=======
+>>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
     reviews: [
       {
         type: Schema.Types.ObjectId,

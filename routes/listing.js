@@ -95,6 +95,7 @@ router.delete('/:id',isLoggedIn, isOwner, wrapeAsync(async (req, res) => {
 }));
 
 
+<<<<<<< HEAD
 router.post("/:id/book", isLoggedIn, wrapeAsync(async (req, res) => {
     let { id } = req.params;
     let listing = await Listing.findById(id);
@@ -113,4 +114,6 @@ router.post("/:id/book", isLoggedIn, wrapeAsync(async (req, res) => {
 
 
 
+=======
+>>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
 module.exports = router;
