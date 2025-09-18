@@ -23,7 +23,7 @@
                             </div>
                             <div>
                                 <% if (listing.reviews.length === 0) { %>
-                                    <p class="text-muted small">⭐⭐⭐⭐⭐ No reviews yet.</p>
+                                    <p class="text-muted small">reviews <br/>⭐⭐⭐⭐⭐</p>
                                 <% } else { %>
                                     <p class="text-muted small">⭐ 4.8 (366 Reviews)</p>
                                 <% } %>
@@ -40,10 +40,12 @@
 
                     <!-- Buttons: Remove & Continue -->
                     <div class="d-flex gap-2 mt-3">
-                        <a href="/listings" class="btn w-50 fw-bold rounded-pill text-white" 
-                           style="background-color: #fe424d; transition: 0.3s;">Remove</a>
-                        <a href="/listings" class="btn w-50 fw-bold rounded-pill btn-success" 
-                           style="transition: 0.3s;">Continue</a>
+                        <form action="/cart/<%= listing._id %>/remove" method="POST" style="display: inline;">
+                            <button class="btn fw-bold rounded-pill text-white"
+                               style="background-color: #dc3545; transition: 0.3s; width: 200px">Remove</button>
+                        </form>
+                        <a href="/listings" class="btn fw-bold rounded-pill btn-success"
+                           style="background-color: #276f38; transition: 0.3s; width: 200px;">Continue</a>
                     </div>
                 </div>
             <% }) %>

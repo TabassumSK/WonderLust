@@ -87,12 +87,14 @@ body {
 }
 
 .card-img-overlay {
-    opacity: 0;
+    opacity: 0.8;
+    font-size: 30px;
 }
 
 .card-img-overlay:hover {
     opacity: 0.2 ;
     background-color: white;
+    color: red;
 }
 
 /* New page */
