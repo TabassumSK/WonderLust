@@ -6,11 +6,8 @@
     </div>
     
         <div class="card col-6 offset-3 show-card listing-card">
-<<<<<<< HEAD
             <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image" style="height: 25rem;">
-=======
             <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
->>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
             <div class="card-body">
               <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
 
@@ -36,13 +33,10 @@
             <% if(currUser) { %>
             <h4>Leave a Review</h4>
             <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
-<<<<<<< HEAD
-=======
                 <!-- <div class="mb-3 mt-3">
                     <label for="rating" class="form-label">Rating</label>
                     <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
                 </div> -->
->>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
                 <div class="mb-3 mt-3">
                     <label for="rating" class="form-label">Rating</label>
                 <fieldset class="starability-slot">
@@ -85,14 +79,11 @@
                         </form>
                     </div>
                 <% } %>
-<<<<<<< HEAD
             </div> 
         </div>      
         <form action="/listings/<%= listing._id %>/book" method="POST" class="col-6 offset-3 mt-3 mb-3">
             <button class="btn btn-success w-100">Book Now</button>
         </form> 
-=======
             </div>
         </div>
->>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
 </div>

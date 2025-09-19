@@ -1,12 +1,10 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-<<<<<<< HEAD
 const path = require("path");
 const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
-=======
 // const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require('method-override');
@@ -16,23 +14,14 @@ const ExpressError = require("./utils/ExpressError.js");
 // const {listingSchema, reviewSchema} = require("./schema.js");
 // const Review = require("./models/review.js");
 // const review = require('./models/review.js');
->>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-<<<<<<< HEAD
-=======
-
-
-
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
->>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
-
-
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
@@ -69,7 +58,6 @@ const sessionOptions = {
 // app.get("/", (req, res) => {
 //     res.redirect('/listings');
 // });  
-<<<<<<< HEAD
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -105,7 +93,6 @@ app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));
 });
 
-=======
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -248,7 +235,6 @@ app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));
 });
 
->>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
 //error handling
 app.use((err, req, res, next) => {
     let {statusCode = 500 ,message = "Something went Wrong"} = err;
@@ -256,11 +242,7 @@ app.use((err, req, res, next) => {
     // res.status(statusCode).send(message);
 });
 
-<<<<<<< HEAD
+
 app.listen(1080, () => {
     console.log("Server is running at port 1080");
-=======
-app.listen(8080, () => {
-    console.log("Server is running at port 8080");
->>>>>>> e90f670d2ec196dfa401aa6332035d5cf6d34488
 });
