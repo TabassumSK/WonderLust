@@ -1,57 +1,61 @@
-# 🏡 Wonderlust
+# Wonderlust
 
 **Wonderlust** is a full-stack web application inspired by **Airbnb**, allowing property owners to list and manage their properties while users can explore, book, and review them.  
 It features full **authentication and authorization**, **property management**, **booking system**, and **review functionality** — all within a modern, responsive UI.
 
 ---
 
-## 🚀 Features
+## 1. Features
 
-- 🔐 **Authentication & Authorization**
-  - Secure user registration and login.
-  - Password hashing for security.
-  - Role-based access (Owner / User).
+1) **Authentication & Authorization**
+   - Secure user registration and login.
+   - Password hashing for security.
+   - Role-based access (Owner / User).
 
-- 🏠 **Property Management**
-  - Owners can add, edit, and delete listings.
-  - Each property includes images, location, description, and pricing.
-  - Users can browse and search by location or price.
+2) **Property Management**
+   - Owners can add, edit, and delete their listings.
+   - Each property includes images, title, location, description, and price.
+   - Users can browse and search for properties by location, price, or amenities.
 
-- 💳 **Booking System**
-  - Users can book available properties for specific dates.
-  - Prevents double-booking with date validation.
-  - Booking management for both owners and users.
+3) **Booking System**
+   - Users can book properties for specific dates.
+   - Prevents overlapping or duplicate bookings.
+   - Users and owners can view their booking history.
 
-- 💬 **Reviews & Ratings**
-  - Users can leave reviews and rate properties.
-  - Average rating displayed on property pages.
+4) **Reviews & Ratings**
+   - Users can add, edit, and delete reviews.
+   - Average rating displayed on each property page.
+   - Helps users make informed booking decisions.
 
-- 🖼️ **Image Uploads**
-  - Multiple images per property.
-  - Cloud-based image storage (Cloudinary / AWS S3).
+5) **Image Uploads**
+   - Multiple images per property.
+   - Cloud-based image storage (Cloudinary / AWS S3).
 
-- 🧭 **Additional Features**
-  - Responsive design for all devices.
-  - Integrated error handling and form validation.
-  - Optional dark/light mode.
+6) **Responsive Design**
+   - Fully responsive layout for desktop, tablet, and mobile.
+   - Optional dark and light theme support.
+
+7) **Error Handling & Validation**
+   - Robust input validation for all forms.
+   - Centralized error handling for API routes..
 
 ---
 
-## 🧩 Tech Stack
+## 2. Tech Stack
 
 | Category | Technology |
 |-----------|-------------|
-| **Frontend** | React / Next.js / Tailwind CSS |
+| **Frontend** | HTML | CSS | JavaScript | EJS |
 | **Backend** | Node.js / Express.js |
-| **Database** | MongoDB / PostgreSQL |
-| **Authentication** | JWT / Passport.js / NextAuth |
+| **Database** | MongoDB |
+| **Authentication** | JWT / Passport.js |
 | **Storage** | Cloudinary / AWS S3 |
 | **Deployment** | Vercel / Render / Railway |
 | **Version Control** | Git & GitHub |
 
 ---
 
-## ⚙️ Installation and Setup
+## 3. Installation and Setup
 
 ### Prerequisites
 - Node.js (v16+)
@@ -62,5 +66,14 @@ It features full **authentication and authorization**, **property management**, 
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/wonderlust.git
+   git clone https://github.com/TabassumSK/wonderlust.git
    cd wonderlust
+
+2. Install Dependencies
+   ```bash
+   npm install
+
+3. Run the Application
+   ```bash
+   npx nodemon app.js
+
