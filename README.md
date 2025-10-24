@@ -45,7 +45,7 @@ It features full **authentication and authorization**, **property management**, 
 
 | Category | Technology |
 |-----------|-------------|
-| **Frontend** | HTML | CSS | JavaScript | EJS |
+| **Frontend** | HTML / CSS / JavaScript / EJS |
 | **Backend** | Node.js / Express.js |
 | **Database** | MongoDB |
 | **Authentication** | JWT / Passport.js |
