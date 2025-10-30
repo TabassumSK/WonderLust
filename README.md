@@ -1,7 +1,7 @@
 # Wonderlust
 
 **Wonderlust** is a full-stack web application inspired by **Airbnb**, allowing property owners to list and manage their properties while users can explore, book, and review them.  
-It features full **authentication and authorization**, **property management**, **booking system**, and **review functionality** — all within a modern, responsive UI.
+It features full **authentication and authorization**, **property management**, **booking system**, and **review functionality** all within a modern, responsive UI.
 
 ---
 
@@ -27,15 +27,11 @@ It features full **authentication and authorization**, **property management**, 
    - Average rating displayed on each property page.
    - Helps users make informed booking decisions.
 
-5) **Image Uploads**
-   - Multiple images per property.
-   - Cloud-based image storage (Cloudinary / AWS S3).
-
-6) **Responsive Design**
+5) **Responsive Design**
    - Fully responsive layout for desktop, tablet, and mobile.
    - Optional dark and light theme support.
 
-7) **Error Handling & Validation**
+6) **Error Handling & Validation**
    - Robust input validation for all forms.
    - Centralized error handling for API routes..
 
